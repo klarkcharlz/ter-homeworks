@@ -36,6 +36,29 @@ variable "vpc_name" {
 
 variable "vms_ssh_root_key" {
   type        = string
-  default     = "<your_ssh_ed25519_key>"
+  default     = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFgjh+mFoLqnQENyRgH75TLqcurlHO6hu3aFw+t1IX5s klark.charlz@mail.ru"
   description = "ssh-keygen -t ed25519"
+}
+
+# image and instance variables
+variable "vm_web_image_family" {
+  description = "The family of the image to use for the VM"
+  type        = string
+  default     = "ubuntu-2004-lts"
+}
+
+
+variable "vms_resources" {
+  type = map(object({
+    cores         = number
+    memory        = number
+    core_fraction = number
+  }))
+  description = "Map of resources for VMs"
+}
+
+
+variable "metadata" {
+  type = map(string)
+  description = "Common metadata for VMs"
 }
