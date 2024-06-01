@@ -1,0 +1,13 @@
+# inventory.tmpl
+[webservers]
+%{ for ip in web_ips ~}
+web-${ip.index + 1} ansible_host=${ip.address} fqdn=${ip.fqdn}
+%{ endfor ~}
+
+[databases]
+%{ for db in db_ips ~}
+${db.name} ansible_host=${db.address} fqdn=${db.fqdn}
+%{ endfor ~}
+
+[storage]
+storage ansible_host=${storage_ip.address} fqdn=${storage_ip.fqdn}

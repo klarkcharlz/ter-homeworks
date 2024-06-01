@@ -4,6 +4,12 @@ variable "token" {
   description = "OAuth-token; https://cloud.yandex.ru/docs/iam/concepts/authorization/oauth-token"
 }
 
+variable "platform_id" {
+  type        = string
+  description = "Platform ID"
+  default = "standard-v3"
+}
+
 variable "cloud_id" {
   type        = string
   description = "https://cloud.yandex.ru/docs/resource-manager/operations/cloud/get-id"
@@ -29,4 +35,10 @@ variable "vpc_name" {
   type        = string
   default     = "develop"
   description = "VPC network&subnet name"
+}
+
+variable "vm_web_image_family" {
+  description = "The family of the image to use for the VM"
+  type        = string
+  default     = "ubuntu-2004-lts"
 }
