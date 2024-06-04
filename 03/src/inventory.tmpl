@@ -10,4 +10,6 @@ ${db.name} ansible_host=${db.address} fqdn=${db.fqdn}
 %{ endfor ~}
 
 [storage]
-storage ansible_host=${storage_ip.address} fqdn=${storage_ip.fqdn}
+%{ for storage in storage_ips ~}
+storage ansible_host=${storage.address} fqdn=${storage.fqdn}
+%{ endfor ~}

@@ -17,6 +17,10 @@ resource "yandex_compute_instance" "web" {
     platform_id = var.platform_id
     allow_stopping_for_update = true
 
+    depends_on = [
+        yandex_compute_instance.db
+    ]
+
     resources {
         cores         = var.vms_resources["web"].cores
         memory        = var.vms_resources["web"].memory
